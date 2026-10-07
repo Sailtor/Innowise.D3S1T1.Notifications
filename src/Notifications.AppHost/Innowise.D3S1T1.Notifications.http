@@ -1,0 +1,6 @@
+@Innowise.D3S1T1.Notifications_HostAddress = http://localhost:5135
+
+GET {{Innowise.D3S1T1.Notifications_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
