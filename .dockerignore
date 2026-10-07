@@ -28,3 +28,16 @@ README.md
 !.git/config
 !.git/packed-refs
 !.git/refs/heads/**
+
+# --- Notifications-only additions (the rest of this file matches the sibling services verbatim) ---
+
+# The Dockerfile builds src/Notifications.AppHost, never the solution, so neither of these reaches
+# the image. Excluding them keeps the `COPY . .` layer from being invalidated by a workflow edit,
+# which is most of the churn in this repo. No tests/ directory exists yet; kept pre-emptively so a
+# future test project doesn't require a second edit here.
+tests
+.github
+
+# Documentation, for the same cache reason. The verbatim block above already excludes README.md by
+# name; this generalises it, so a new .md file cannot silently start invalidating the build layer.
+**/*.md
