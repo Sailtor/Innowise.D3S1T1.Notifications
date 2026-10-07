@@ -13,6 +13,12 @@ public static class DependencyInjectionRegistration
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         AddMessaging(services, configuration);
+        AddThresholds(services, configuration);
+    }
+
+    private static void AddThresholds(IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<ThresholdOptions>(configuration.GetSection(ThresholdOptions.SectionName));
     }
 
     private static void AddMessaging(IServiceCollection services, IConfiguration configuration)
