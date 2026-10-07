@@ -29,6 +29,11 @@ try
     // First in the pipeline so its one-line-per-request summary times everything below it.
     app.UseSerilogRequestLogging();
 
+    // Must run before any endpoint it protects, or the preflight/negotiate request never
+    // gets the Access-Control-Allow-* headers a cross-origin browser client requires. Placed
+    // here, same position relative to the endpoints below as Gateway's app.UseCors() call.
+    app.UseCors();
+
     // Liveness: no checks registered, so it answers "the process is up" even while RabbitMQ
     // is unreachable - there is no readiness endpoint because there is no dependency to be
     // ready on (no DB, see NOTIFICATION_SERVICE_PLAN.md Phase 3).
