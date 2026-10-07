@@ -10,4 +10,6 @@ builder.Services.AddPresentation(builder.Configuration);
 
 var app = builder.Build();
 
+app.MapHub<MetricsHub>("/hubs/metrics");
+
 app.Run();
