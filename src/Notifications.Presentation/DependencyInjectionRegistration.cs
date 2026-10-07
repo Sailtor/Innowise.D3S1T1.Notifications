@@ -10,5 +10,6 @@ public static class DependencyInjectionRegistration
     {
         services.AddSignalR();
         services.AddScoped<IReadingNotificationPublisher, SignalRReadingNotificationPublisher>();
+        services.AddHealthChecks();
     }
 }
